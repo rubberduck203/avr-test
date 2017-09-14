@@ -87,6 +87,16 @@ bin/test -c #-c colorizes output
 
 Improve make by changing `make test` to build and run tests.
 
+
+```make
+#CppUTest
+CPPUTEST_HOME = /usr/local/Cellar/cpputest/3.8
+CPPFLAGS += -I$(CPPUTEST_HOME)/include
+CXXFLAGS += -include $(CPPUTEST_HOME)/include/CppUTest/MemoryLeakDetectorNewMacros.h
+CFLAGS += -include $(CPPUTEST_HOME)/include/CppUTest/MemoryLeakDetectorMallocMacros.h
+LD_LIBRARIES = -L$(CPPUTEST_HOME)/lib -lCppUTest -lCppUTestExt
+```
+
 ---
 
 [Interesting article about using CppUTest](https://www.sparkpost.com/blog/getting-started-cpputest/)
@@ -180,3 +190,55 @@ Oh, and don't forget to copy this xml file into `Flip 3.4.2\bin\PartDescriptionF
 	<Protocol FILE="RS232_I03.xml" />
 </Part>
 ```
+
+I eventually gave up and just used Windows and Batchisp/Flip to flash the device.
+
+## Docker
+
+I put together a docker image to document the necessary tools and make the build environment repeatable.
+
+### Build Image
+
+```bash
+docker build -t rubberduck/avr .
+```
+
+### Run Image As Build Tool
+
+This command will run the container and mount the current working directory to the working directory of the container. 
+Mounting the current container means we leave the build artifacts behind on the host machine.
+
+```bash
+docker run --rm -it -v ${PWD}:/mount rubberduck/avr
+```
+
+This means I needed to modify the make file to use environment variables to obtain cpputest file locations, because brew puts them all into one place, but on ubuntu, the files are scattered around.
+
+If using Mac, add the following variables to your ~/.bash_profile.
+
+```bash
+export CPPUTEST_HOME=/usr/local/Cellar/cpputest/3.8
+export CPPUTEST_INCLUDE=$CPPUTEST_HOME/include
+export CPPUTEST_LIB=$CPPUTEST_LIB/lib
+```
+
+Change Makefile variables to look like this.
+
+```make
+CPPFLAGS += -I$(CPPUTEST_INCLUDE)
+CXXFLAGS += -include $(CPPUTEST_INCLUDE)/CppUTest/MemoryLeakDetectorNewMacros.h
+CFLAGS += -include $(CPPUTEST_INCLUDE)/CppUTest/MemoryLeakDetectorMallocMacros.h
+LD_LIBRARIES = -L$(CPPUTEST_LIB) -lCppUTest -lCppUTestExt
+```
+
+First fun error happens
+
+> undefined reference to 'UtestShell::getCurrent()'
+
+[Need to re-order the link command so that library comes last.](https://groups.google.com/forum/#!topic/cpputest/GnlxTVf8i8w)
+
+Next fun error happens
+
+> Main.c:19:9: error: 'for' loop initial declarations are only allowed in C99 or C11 mode
+
+Add `-std=c11` arg to avr target to use newest syntax.
