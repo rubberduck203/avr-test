@@ -26,3 +26,8 @@ void TurnLedOn(volatile uint8_t* ledsAddress, uint8_t ledNumber)
 {
     *ledsAddress |= LedNumberToBitMask(ledNumber);
 }
+
+void TurnLedOff(volatile uint8_t* ledsAddress, uint8_t ledNumber)
+{
+    *ledsAddress &= ~LedNumberToBitMask(ledNumber);
+}

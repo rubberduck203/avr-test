@@ -51,3 +51,23 @@ TEST(LedDriver, TurnAllLedsOff)
   TurnLedsOff(&virtualLeds);
   BYTES_EQUAL(0x00, virtualLeds);
 }
+
+TEST(LedDriver, TurnFirstByteLedOff)
+{
+  TurnLedsOn(&virtualLeds);
+  TurnLedOff(&virtualLeds, 3);
+
+  //0b11111111 0xff 
+  //0b00000100 0x06
+  //0b11111011 0xfb
+  BYTES_EQUAL(0xfb, virtualLeds);
+}
+
+TEST(LedDriver, TurnSecondByteLedOff)
+{
+  TurnLedsOn(&virtualLeds);
+  TurnLedOff(&virtualLeds, 5);
+  
+  //0b11101111
+  BYTES_EQUAL(0xef, virtualLeds);
+}
