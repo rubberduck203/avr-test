@@ -36,4 +36,13 @@ TEST(LedDriver, TurnOnLed2)
   BYTES_EQUAL(0x02, virtualLeds);
 }
 
+TEST(LedDriver, ALightAlreadyOnStaysOn)
+{
+  uint8_t virtualLeds = 0xff;
+  LedDriver_Create(&virtualLeds);
 
+  TurnLedOn(&virtualLeds, 1);
+  TurnLedOn(&virtualLeds, 2);
+
+  BYTES_EQUAL(0x03, virtualLeds);
+}
