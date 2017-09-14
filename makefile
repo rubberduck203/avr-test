@@ -7,6 +7,9 @@ LD_LIBRARIES = -L$(CPPUTEST_HOME)/lib -lCppUTest -lCppUTestExt
 build:
 	gcc -Wall LedDriver.c -c -o bin/LedDriver.o
 
+avr:
+	avr-gcc -mmcu=atxmega128a1 -Os -g -c LedDriver.c -o bin/LedDriver.o
+
 test:
 	make build
 	g++ -Wall $(CPPFLAGS) $(LD_LIBRARIES) $(CXXFLAGS) $(CFLAGS) bin/LedDriver.o LedDriverTest.cpp AllTests.cpp -o bin/test 
