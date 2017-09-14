@@ -11,11 +11,16 @@ int main(void)
     
     LEDPORT.DIR = 0xff; //config entire port for output
 
-    // Now, just for fun, we toggle all LEDs, again and again and again...
     while (1)
     {
-        LEDPORT.OUTTGL = 0xff;
-        _delay_ms(3000);
+        volatile uint8_t* leds = &LEDPORT.OUT;
+        LedDriver_Create(leds);
+        _delay_ms(1000);
+        for(uint8_t i = 1; i < 9; i++) 
+        {
+            TurnLedOn(leds, i);
+            _delay_ms(1000);
+        }
     }
     
     return 0;

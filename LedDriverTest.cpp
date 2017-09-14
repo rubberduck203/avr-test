@@ -47,6 +47,16 @@ TEST(LedDriver, ALightAlreadyOnStaysOn)
   BYTES_EQUAL(0x03, virtualLeds);
 }
 
+TEST(LedDriver, TurnOnSecondByteLed)
+{
+  uint8_t virtualLeds = 0xff;
+  LedDriver_Create(&virtualLeds);
+
+  TurnLedOn(&virtualLeds, 8);
+
+  BYTES_EQUAL(0x80, virtualLeds);
+}
+
 IGNORE_TEST(LedDriver, TurnAllLedsOn)
 {
   FAIL("Start Here")
