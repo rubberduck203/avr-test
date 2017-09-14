@@ -15,7 +15,7 @@ int main(void)
     while (1)
     {
         LEDPORT.OUTTGL = 0xff;
-        _delay_ms(1000);
+        _delay_ms(3000);
     }
     
     return 0;

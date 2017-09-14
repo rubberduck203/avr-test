@@ -127,15 +127,6 @@ avr-gcc -Wall -mmcu=atxmega128a1 -g bin/LedDriver.o bin/Main.o -o bin/demo.elf
 - Extract hex file from elf to upload
 - update Main.c to toggle all lights on and off to verify dfu-programmer works
 
-### Setup dfu-programmer
-
-I'm running on a \*nix machine, so I can't use FLIP to upload to the bootloader on my xplained.
-
-
-
-
-
----
 
 ## Upload to target device
 
@@ -143,3 +134,49 @@ Open Source Version of Atmel's Flip/BatchISP Tool for \*nix based systems.
 Needed for interfacing with Eval board's USB bootloader.
 
 http://dfu-programmer.github.io/
+
+I'm running on a \*nix machine, so I can't use FLIP to upload to the bootloader on my xplained.
+
+```bash
+git clone https://github.com/dfu-programmer/dfu-programmer.git
+cd dfu-programmer
+```
+
+follow instructions in readme
+
+**Holy crap what a PITA.**
+
+So, dfu-programmer doesn't work with Mac because libusb doesn't seem to play well and something in the MacOs is lockging the serial port so dfu-programmer can't get a handle on it.
+That's *after* [I modified the table in order to add support for x128a1][1] (it already supports x128a1u).
+
+[1]:https://github.com/rubberduck203/dfu-programmer/commit/396e093edfdba7f5a1c8c2bf529556a63269e774
+
+So, I ditched that and tried Avrdude because flip support was added recently.
+No dice. I'm getting a very similar error.
+
+- pid = 0x2122
+
+I've had to resort to programming it on a windows machine I have around here using FLIP.
+
+Oh, and don't forget to copy this xml file into `Flip 3.4.2\bin\PartDescriptionFiles` or it won't work either.
+
+- [ATxmega Xplained - Getting Started Guide](http://www.atmel.com/Images/doc8372.pdf) 
+- [Atxmega Xplained - Getting Started Guide App Notes Download](http://www.atmel.com/images/AVR1924.zip)
+
+#### ATxmega128a1.xml
+
+```xml
+<?xml version="1.0"?>
+<!DOCTYPE Part SYSTEM "part.dtd">
+<Part NAME="ATxmega128A1">
+	<PageSize SIZE="512" />
+
+	<Memory NAME="FLASH"         SIZE="131072" ADDR="0"  INDEX="0"/>
+	<Memory NAME="EEPROM"        SIZE="2048"   ADDR="0"  INDEX="1"/>
+	<Memory NAME="BOOTLOADER"    SIZE="3"                INDEX="3"/>
+	<Memory NAME="SIGNATURE"     SIZE="4"                INDEX="6"/>
+	<Memory NAME="USER"          SIZE="512"              INDEX="11"/>
+	
+	<Protocol FILE="RS232_I03.xml" />
+</Part>
+```
