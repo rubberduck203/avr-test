@@ -12,6 +12,8 @@ avr:
 	avr-gcc -Wall -mmcu=atxmega128a1 -Os -g -c Main.c -o bin/Main.o 
 	avr-gcc -Wall -mmcu=atxmega128a1 -g bin/LedDriver.o bin/Main.o -o bin/demo.elf
 	avr-objcopy -j .text -j .data -O ihex bin/demo.elf bin/demo.hex
+	avr-size --format=avr --mcu=atxmega128a1 bin/demo.elf
+	
 test:
 	make build
 	g++ -Wall $(CPPFLAGS) $(LD_LIBRARIES) $(CXXFLAGS) $(CFLAGS) bin/LedDriver.o LedDriverTest.cpp AllTests.cpp -o bin/test 
