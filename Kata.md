@@ -22,4 +22,15 @@ etc.
 - [x] On initialization, turn all the LEDs off
 - [x] Turn all the LEDs On
 - [x] Turn a Single LED On
-- [ ] Turn a Single LED Off
+- [x] Turn a Single LED Off
+- [ ] Oh crap! The pins are active LOW not HIGH!
+- [ ] Start up sequence
+
+Notes:
+
+- The first several stories are straight forward.
+- The "Oh crap" story was inspired by the actual board I downloaded this code to.
+I didn't initially intend to actually run this on a target, but when I did I discovered that all the lights were turning *off* in sequence instead of on.
+It seems like it would be a common enough problem, and worth thinking about how to make it as easy as possible to change both the tests and production code if this happens.
+- Start up sequence is intended to create drive a need to create a higher level domain context that uses the LedDriver.
+
