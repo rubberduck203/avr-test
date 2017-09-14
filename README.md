@@ -124,6 +124,17 @@ avr-gcc -Wall -mmcu=atxmega128a1 -g -c Main.c -o bin/Main.o
 avr-gcc -Wall -mmcu=atxmega128a1 -g bin/LedDriver.o bin/Main.o -o bin/demo.elf
 ```
 
+- Extract hex file from elf to upload
+- update Main.c to toggle all lights on and off to verify dfu-programmer works
+
+### Setup dfu-programmer
+
+I'm running on a \*nix machine, so I can't use FLIP to upload to the bootloader on my xplained.
+
+
+
+
+
 ---
 
 ## Upload to target device

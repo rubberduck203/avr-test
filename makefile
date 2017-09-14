@@ -9,7 +9,7 @@ build:
 
 avr:
 	avr-gcc -Wall -mmcu=atxmega128a1 -Os -g -c LedDriver.c -o bin/LedDriver.o
-	avr-gcc -Wall -mmcu=atxmega128a1 -g -c Main.c -o bin/Main.o 
+	avr-gcc -Wall -mmcu=atxmega128a1 -Os -g -c Main.c -o bin/Main.o 
 	avr-gcc -Wall -mmcu=atxmega128a1 -g bin/LedDriver.o bin/Main.o -o bin/demo.elf
 	avr-objcopy -j .text -j .data -O ihex bin/demo.elf bin/demo.hex
 test:
