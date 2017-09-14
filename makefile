@@ -6,6 +6,8 @@ LD_LIBRARIES = -L$(CPPUTEST_LIB) -lCppUTest -lCppUTestExt
 
 #AVR
 DEVICE = atxmega128a1
+AVR_FLAGS = -Wall -mmcu=$(DEVICE)
+AVR_CFLAGS = $(AVR_FLAGS) -Os -g -c -std=c11
 
 .PHONY: all
 all:
@@ -16,9 +18,9 @@ build:
 	gcc -Wall LedDriver.c -c -o bin/LedDriver.o
 
 avr:
-	avr-gcc -Wall -mmcu=$(DEVICE) -Os -g -c -std=c11 LedDriver.c -o bin/LedDriver.o
-	avr-gcc -Wall -mmcu=$(DEVICE) -Os -g -c -std=c11 Main.c -o bin/Main.o 
-	avr-gcc -Wall -mmcu=$(DEVICE) -g bin/LedDriver.o bin/Main.o -o bin/demo.elf
+	avr-gcc $(AVR_CFLAGS) LedDriver.c -o bin/LedDriver.o
+	avr-gcc $(AVR_CFLAGS) Main.c -o bin/Main.o 
+	avr-gcc $(AVR_FLAGS) -g bin/LedDriver.o bin/Main.o -o bin/demo.elf
 	avr-objcopy -j .text -j .data -O ihex bin/demo.elf bin/demo.hex
 	avr-size --format=avr --mcu=$(DEVICE) bin/demo.elf
 
