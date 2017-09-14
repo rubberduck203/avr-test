@@ -23,6 +23,9 @@ brew install avr-gcc
 ```
 
 Grab a coffee...
+This took about an hour.
+
+> 🍺  /usr/local/Cellar/avr-gcc/7.2.0: 1,682 files, 174.9MB, built in 56 minutes 45 seconds    
 
 ---
 
@@ -58,7 +61,16 @@ Setup [CppUTest](https://cpputest.github.io/)
 brew install cpputest
 ```
 
+https://stackoverflow.com/questions/18453742/cpputest-example-doesnt-work
 
+> Undefined symbols for architecture x86_64:   
+> ...
+
+//TODO: fix 
+
+---
+
+[Interesting article about using CppUTest](https://www.sparkpost.com/blog/getting-started-cpputest/)
 
 ---
 
