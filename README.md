@@ -1,4 +1,11 @@
+# Dual Targeting gcc/avr-gcc
 
+## Summary
+
+Experiment to see if I can set up a dev environment to build and test against both the gcc and the avr-gcc compiler. 
+The goal is to be able to run unit tests locally, and then compile with avr-gcc to upload to the target device.
+
+## Notes
 I already had gcc installed via xcode.
 
 > gcc --version
@@ -16,8 +23,6 @@ brew install avr-gcc
 ```
 
 Grab a coffee...
-
-
 
 ---
 
@@ -41,6 +46,19 @@ main (void)
 ```bash
 gcc -Wall hello.c -o hello
 ```
+
+---
+
+## Tests
+
+I chose CppUTest at the recommendation of James Greening via his book TDD for Embedded C.
+Setup [CppUTest](https://cpputest.github.io/)
+
+```bash 
+brew install cpputest
+```
+
+
 
 ---
 
