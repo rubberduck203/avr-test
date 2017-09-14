@@ -42,7 +42,7 @@ TEST(LedDriver, TurnOnSecondByteLed)
 
 TEST(LedDriver, TurnAllLedsOn)
 {
-  TurnAllLedsOn(&virtualLeds);
+  TurnLedsOn(&virtualLeds);
   BYTES_EQUAL(0xff, virtualLeds);
 }
 

@@ -5,7 +5,7 @@ void TurnLedsOff(volatile uint8_t* ledsAddress)
     *ledsAddress = 0x00;
 }
 
-void TurnAllLedsOn(volatile uint8_t* ledsAddress)
+void TurnLedsOn(volatile uint8_t* ledsAddress)
 {
     *ledsAddress = 0xff;
 }
