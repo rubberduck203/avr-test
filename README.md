@@ -21,6 +21,29 @@ Grab a coffee...
 
 ---
 
+Meanwhile...
+
+Verify we can compile with gcc.
+
+http://www.network-theory.co.uk/docs/gccintro/gccintro_9.html
+
+```c
+#include <stdio.h>
+
+int
+main (void)
+{
+  printf ("Hello, world!\n");
+  return 0;
+}
+```
+
+```bash
+gcc -Wall hello.c -o hello
+```
+
+---
+
 Open Source Version of Atmel's Flip Tool for \*nix based systems.
 Needed for interfacing with Eval board's USB bootloader.
 
