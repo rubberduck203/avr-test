@@ -7,6 +7,17 @@ The device will have 8 memory mapped, single color, LEDs.
 The pins are active HIGH.
 On power up, the hardware turns the lights on.
 
+The low bit maps to LED1; high bit to LED8.
+
+| Bit | LED |
+| --- | --- |
+|  0  |  1  |
+|  1  |  2  |
+|  2  |  3  |
+
+etc.
+
+
 ## Stories
 - [x] On initialization, turn all the LEDs off
 - [ ] Turn a Single LED On
