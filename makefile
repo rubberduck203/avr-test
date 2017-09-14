@@ -9,7 +9,7 @@ build:
 
 test:
 	make build
-	g++ -Wall $(CPPFLAGS) $(LD_LIBRARIES) $(CXXFLAGS) $(CFLAGS) bin/LedDriver.o helloTest.cpp AllTests.cpp -o bin/test 
+	g++ -Wall $(CPPFLAGS) $(LD_LIBRARIES) $(CXXFLAGS) $(CFLAGS) bin/LedDriver.o LedDriverTest.cpp AllTests.cpp -o bin/test 
 	bin/test -c
 clean:
 	rm bin/*
