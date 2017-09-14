@@ -2,7 +2,12 @@
 
 void LedDriver_Create(volatile uint8_t* ledsAddress)
 {
-    *ledsAddress = 0;
+    *ledsAddress = 0x00;
+}
+
+void TurnAllLedsOn(volatile uint8_t* ledsAddress)
+{
+    *ledsAddress = 0xff;
 }
 
 uint8_t LedNumberToBitMask(uint8_t ledNumber)

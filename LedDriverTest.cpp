@@ -51,7 +51,8 @@ TEST(LedDriver, TurnOnSecondByteLed)
   BYTES_EQUAL(0x80, virtualLeds);
 }
 
-IGNORE_TEST(LedDriver, TurnAllLedsOn)
+TEST(LedDriver, TurnAllLedsOn)
 {
-  FAIL("Start Here")
+  TurnAllLedsOn(&virtualLeds);
+  BYTES_EQUAL(0xff, virtualLeds);
 }
