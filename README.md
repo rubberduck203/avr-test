@@ -79,6 +79,17 @@ And then run the tests with `./a.out`
 The trouble was I wasn't properly linking in the CppUTest libary when trying to compile.
 Created a makefile in the `test` directory to make compiling repeatable.
 
+```bash
+cd test
+make
+bin/test -c #-c colorizes output
+```
+
+### TODO
+
+ 1. Put code from `src` directory under test.
+ 2. Make sure we can copmile that code with the avr compiler.
+
 ---
 
 [Interesting article about using CppUTest](https://www.sparkpost.com/blog/getting-started-cpputest/)
