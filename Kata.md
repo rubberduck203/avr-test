@@ -23,7 +23,7 @@ etc.
 - [x] Turn all the LEDs On
 - [x] Turn a Single LED On
 - [x] Turn a Single LED Off
-- [ ] Oh crap! The pins are active LOW not HIGH!
+- [x] Oh crap! The pins are active LOW not HIGH!
 - [ ] Start up sequence
 
 Notes:

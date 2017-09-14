@@ -2,12 +2,12 @@
 
 void TurnLedsOff(volatile uint8_t* ledsAddress)
 {
-    *ledsAddress = 0x00;
+    *ledsAddress = 0xff;
 }
 
 void TurnLedsOn(volatile uint8_t* ledsAddress)
 {
-    *ledsAddress = 0xff;
+    *ledsAddress = 0x00;
 }
 
 uint8_t LedNumberToBitMask(uint8_t ledNumber)
@@ -24,10 +24,10 @@ uint8_t LedNumberToBitMask(uint8_t ledNumber)
 
 void TurnLedOn(volatile uint8_t* ledsAddress, uint8_t ledNumber)
 {
-    *ledsAddress |= LedNumberToBitMask(ledNumber);
+    *ledsAddress &= ~LedNumberToBitMask(ledNumber);
 }
 
 void TurnLedOff(volatile uint8_t* ledsAddress, uint8_t ledNumber)
 {
-    *ledsAddress &= ~LedNumberToBitMask(ledNumber);
+    *ledsAddress |= LedNumberToBitMask(ledNumber);
 }
