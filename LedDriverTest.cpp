@@ -47,7 +47,7 @@ TEST(LedDriver, ALightAlreadyOnStaysOn)
   BYTES_EQUAL(0x03, virtualLeds);
 }
 
-TEST(LedDriver, TurnAllLedsOn)
+IGNORE_TEST(LedDriver, TurnAllLedsOn)
 {
   FAIL("Start Here")
 }
