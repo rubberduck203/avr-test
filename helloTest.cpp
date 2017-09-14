@@ -9,11 +9,6 @@ TEST_GROUP(FirstTestGroup)
 {
 };
 
-TEST(FirstTestGroup, FirstTest)
-{
-   CHECK_EQUAL(2,2);
-}
-
 TEST(FirstTestGroup, LedsAreOffAfterCreate)
 {
   uint8_t virtualLeds = 0xff;
