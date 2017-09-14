@@ -66,7 +66,18 @@ https://stackoverflow.com/questions/18453742/cpputest-example-doesnt-work
 > Undefined symbols for architecture x86_64:   
 > ...
 
-//TODO: fix 
+After a bit of fussing around, created this command that compiles.
+
+```bash
+g++ -I/usr/local/Cellar/cpputest/3.8/include \
+   -L/usr/local/Cellar/cpputest/3.8/lib -lCppUTest -lCppUTestExt \
+   helloTest.cpp AllTests.cpp 
+``` 
+
+And then run the tests with `./a.out`
+
+The trouble was I wasn't properly linking in the CppUTest libary when trying to compile.
+Created a makefile in the `test` directory to make compiling repeatable.
 
 ---
 
