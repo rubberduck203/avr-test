@@ -85,10 +85,7 @@ make
 bin/test -c #-c colorizes output
 ```
 
-### TODO
-
- 1. Put code from `src` directory under test.
- 2. Make sure we can copmile that code with the avr compiler.
+Improve make by changing `make test` to build and run tests.
 
 ---
 
@@ -96,7 +93,42 @@ bin/test -c #-c colorizes output
 
 ---
 
-Open Source Version of Atmel's Flip Tool for \*nix based systems.
+## Compiling for avr target
+
+- Add an `avr` target to make file.
+
+```bash
+avr-gcc -Wall -mmcu=atxmega128a1 -Os -g -c LedDriver.c -o bin/LedDriver.o
+```
+
+- Add a main program for the avr. This file should do *very* little. Just delegate off.
+
+```c
+#include "LedDriver.h"
+
+int main(void)
+{
+    // Just here to make sure we can link
+    // Implementation will come later
+    return 0;
+}
+```
+
+```bash
+avr-gcc -Wall -mmcu=atxmega128a1 -g -c Main.c -o bin/Main.o
+```
+
+- Add link to `avr` make target.
+
+```bash
+avr-gcc -Wall -mmcu=atxmega128a1 -g bin/LedDriver.o bin/Main.o -o bin/demo.elf
+```
+
+---
+
+## Upload to target device
+
+Open Source Version of Atmel's Flip/BatchISP Tool for \*nix based systems.
 Needed for interfacing with Eval board's USB bootloader.
 
 http://dfu-programmer.github.io/
