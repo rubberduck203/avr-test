@@ -242,3 +242,13 @@ Next fun error happens
 > Main.c:19:9: error: 'for' loop initial declarations are only allowed in C99 or C11 mode
 
 Add `-std=c11` arg to avr target to use newest syntax.
+
+
+*Don't set those environment variables at all. Use pkg-config instead.*
+
+```make
+CPPFLAGS += $(shell pkg-config --cflags cpputest)
+CXXFLAGS += -include CppUTest/MemoryLeakDetectorNewMacros.h
+CFLAGS += -include CppUTest/MemoryLeakDetectorMallocMacros.h
+LD_LIBRARIES = $(shell pkg-config --libs cpputest)
+```

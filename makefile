@@ -1,8 +1,8 @@
 #CppUTest
-CPPFLAGS += -I$(CPPUTEST_INCLUDE)
-CXXFLAGS += -include $(CPPUTEST_INCLUDE)/CppUTest/MemoryLeakDetectorNewMacros.h
-CFLAGS += -include $(CPPUTEST_INCLUDE)/CppUTest/MemoryLeakDetectorMallocMacros.h
-LD_LIBRARIES = -L$(CPPUTEST_LIB) -lCppUTest -lCppUTestExt
+CPPFLAGS += $(shell pkg-config --cflags cpputest)
+CXXFLAGS += -include CppUTest/MemoryLeakDetectorNewMacros.h
+CFLAGS += -include CppUTest/MemoryLeakDetectorMallocMacros.h
+LD_LIBRARIES = $(shell pkg-config --libs cpputest)
 
 #AVR
 DEVICE = atxmega128a1

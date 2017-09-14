@@ -8,10 +8,6 @@ RUN apt-get update \
         avr-libc \
         cpputest \
         make \
-    && rm -rf /var/lib/apt/lists/*
-RUN mkdir /usr/lib/cpputest \
-    && ln -s /usr/lib/x86_64-linux-gnu/libCppUTest.a /usr/lib/cpputest/libCppUTest.a \
-    && ln -s /usr/lib/x86_64-linux-gnu/libCppUTestExt.a /usr/lib/cpputest/libCppUTestExt.a
-ENV CPPUTEST_LIB /usr/lib/cpputest
-ENV CPPUTEST_INCLUDE /usr/include    
+        pkg-config \
+    && rm -rf /var/lib/apt/lists/*  
 CMD ["make"]
