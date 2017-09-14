@@ -8,6 +8,11 @@ LD_LIBRARIES = -L$(CPPUTEST_HOME)/lib -lCppUTest -lCppUTestExt
 #AVR
 DEVICE = atxmega128a1
 
+.PHONY: all
+all:
+	make test
+	make avr
+
 build:
 	gcc -Wall LedDriver.c -c -o bin/LedDriver.o
 
