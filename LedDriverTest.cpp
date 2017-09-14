@@ -5,11 +5,11 @@ extern "C"
     #include "LedDriver.h"
 }
 
-TEST_GROUP(FirstTestGroup)
+TEST_GROUP(LedDriver)
 {
 };
 
-TEST(FirstTestGroup, LedsAreOffAfterCreate)
+TEST(LedDriver, LedsAreOffAfterCreate)
 {
   uint8_t virtualLeds = 0xff;
   LedDriver_Create(&virtualLeds);
