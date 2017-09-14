@@ -5,24 +5,13 @@ extern "C"
     #include "LedDriver.h"
 }
 
-TEST_GROUP(LedDriverCreation)
-{
-};
-
-TEST(LedDriverCreation, LedsAreOffAfterCreate)
-{
-  uint8_t virtualLeds = 0xff;
-  LedDriver_Create(&virtualLeds);
-  LONGS_EQUAL(0, virtualLeds);
-}
-
 uint8_t virtualLeds;
 TEST_GROUP(LedDriver)
 {
   void setup()
   {
     virtualLeds = 0xff;
-    LedDriver_Create(&virtualLeds);
+    TurnLedsOff(&virtualLeds);
   }
 };
 
@@ -55,4 +44,10 @@ TEST(LedDriver, TurnAllLedsOn)
 {
   TurnAllLedsOn(&virtualLeds);
   BYTES_EQUAL(0xff, virtualLeds);
+}
+
+TEST(LedDriver, TurnAllLedsOff)
+{
+  TurnLedsOff(&virtualLeds);
+  BYTES_EQUAL(0x00, virtualLeds);
 }

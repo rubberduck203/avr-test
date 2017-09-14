@@ -20,6 +20,6 @@ etc.
 
 ## Stories
 - [x] On initialization, turn all the LEDs off
-- [ ] Turn all the LEDs On
+- [x] Turn all the LEDs On
 - [x] Turn a Single LED On
 - [ ] Turn a Single LED Off

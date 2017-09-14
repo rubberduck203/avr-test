@@ -1,6 +1,6 @@
 #include "LedDriver.h"
 
-void LedDriver_Create(volatile uint8_t* ledsAddress)
+void TurnLedsOff(volatile uint8_t* ledsAddress)
 {
     *ledsAddress = 0x00;
 }
