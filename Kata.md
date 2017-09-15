@@ -9,14 +9,10 @@ On power up, the hardware turns the lights on.
 
 The low bit maps to LED1; high bit to LED8.
 
-| Bit | LED |
-| --- | --- |
-|  0  |  1  |
-|  1  |  2  |
-|  2  |  3  |
-
-etc.
-
+|     |   |   |   |   |   |   |   |   |
+| --- | - | - | - | - | - | - | - | - |
+| Bit | 7 | 6 | 5 | 4 | 3 | 2 | 1 | 0 |
+| LED | 8 | 7 | 6 | 5 | 4 | 3 | 2 | 1 |
 
 ## Stories
 - [x] On initialization, turn all the LEDs off
