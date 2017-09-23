@@ -9,5 +9,4 @@ RUN apt-get update \
         cpputest \
         make \
         pkg-config \
-    && rm -rf /var/lib/apt/lists/*  
-CMD ["make"]
+    && rm -rf /var/lib/apt/lists/* 
