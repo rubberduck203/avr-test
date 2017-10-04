@@ -30,3 +30,10 @@ TEST(LedDriverTests, TurnLedOneOn)
     LedOn(&leds, 1);
     BYTES_EQUAL(0x01, leds);
 }
+
+TEST(LedDriverTests, TurnLedTwoOn)
+{
+    leds_t leds = OFF;
+    LedOn(&leds, 2);
+    BYTES_EQUAL(0x02, leds);
+}

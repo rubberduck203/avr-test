@@ -13,5 +13,10 @@ void LedsOff(leds_t* leds)
 
 void LedOn(leds_t* leds, uint8_t ledNumber)
 {
-    *leds = 0x01;
+    /* 
+     * Leds are 1 indexed, so we correct the index
+     * then shift a one into that bit of an integer
+     * finally, we apply the bitmask
+     */
+    *leds = ON & (1 << (ledNumber - 1));
 }
