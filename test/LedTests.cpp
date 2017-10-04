@@ -16,3 +16,10 @@ TEST(FirstTestGroup, TurnAllLedsOn)
     LedsOn(&leds);
     BYTES_EQUAL(0xff, leds);
 }
+
+TEST(FirstTestGroup, TurnAllLedsOff)
+{
+    uint8_t leds = 0xff;
+    LedsOff(&leds);
+    BYTES_EQUAL(0x00, leds);
+}
