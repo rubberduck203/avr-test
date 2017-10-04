@@ -1,12 +1,12 @@
 #include <stdint.h>
 #include "LedDriver.h"
 
-void LedsOn(leds_t* leds)
+void LedsOn(volatile leds_t* leds)
 {
     *leds = ON;
 }
 
-void LedsOff(leds_t* leds)
+void LedsOff(volatile leds_t* leds)
 {
     *leds = OFF;
 }
@@ -20,12 +20,12 @@ leds_t indexToBitmask(uint8_t ledNumber)
     return 1 << (ledNumber - 1);
 }
 
-void LedOn(leds_t* leds, uint8_t ledNumber)
+void LedOn(volatile leds_t* leds, uint8_t ledNumber)
 {
     *leds |= indexToBitmask(ledNumber);
 }
 
-void LedOff(leds_t* leds, uint8_t ledNumber)
+void LedOff(volatile leds_t* leds, uint8_t ledNumber)
 {
     *leds &= ~indexToBitmask(ledNumber);
 }
