@@ -23,3 +23,10 @@ TEST(LedDriverTests, TurnAllLedsOff)
     LedsOff(&leds);
     BYTES_EQUAL(0x00, leds);
 }
+
+TEST(LedDriverTests, TurnLedOneOn)
+{
+    leds_t leds = 0x00;
+    LedOn(&leds, 1);
+    BYTES_EQUAL(0x01, leds);
+}

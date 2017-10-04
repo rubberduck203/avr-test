@@ -10,3 +10,8 @@ void LedsOff(leds_t* leds)
 {
     *leds = 0x00;
 }
+
+void LedOn(leds_t* leds, uint8_t ledNumber)
+{
+    *leds = 0x01;
+}
