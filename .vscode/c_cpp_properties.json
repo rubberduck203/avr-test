@@ -11,7 +11,9 @@
                 "/usr/include/machine",
                 "/usr/local/Cellar/cpputest/3.8/include",
                 "/usr/local/Cellar/avr-gcc/7.2.0/avr/include",
-                "${workspaceRoot}"
+                "${workspaceRoot}",
+                "${workspaceRoot}/src",
+                "${workspaceRoot}/test"
             ],
             "defines": [],
             "intelliSenseMode": "clang-x64",

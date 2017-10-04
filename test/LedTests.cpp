@@ -1,10 +1,18 @@
+#include <stdint.h>
 #include "CppUTest/TestHarness.h"
+
+extern "C"
+{
+    #include "../src/LedDriver.h"
+}
 
 TEST_GROUP(FirstTestGroup)
 {
 };
 
-TEST(FirstTestGroup, FirstTest)
+TEST(FirstTestGroup, TurnAllLedsOn)
 {
-    BYTES_EQUAL(0xff, 0xff);
+    uint8_t leds = 0x00;
+    LedsOn(&leds);
+    BYTES_EQUAL(0xff, leds);
 }
