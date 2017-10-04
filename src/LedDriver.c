@@ -22,10 +22,10 @@ leds_t indexToBitmask(uint8_t ledNumber)
 
 void LedOn(volatile leds_t* leds, uint8_t ledNumber)
 {
-    *leds |= indexToBitmask(ledNumber);
+    *leds &= ~indexToBitmask(ledNumber);
 }
 
 void LedOff(volatile leds_t* leds, uint8_t ledNumber)
 {
-    *leds &= ~indexToBitmask(ledNumber);
+    *leds |= indexToBitmask(ledNumber);
 }

@@ -2,8 +2,8 @@
 
 typedef uint8_t leds_t;
 
-#define OFF 0x00
-#define ON 0xff
+#define OFF 0xff
+#define ON 0x00
 
 void LedsOn(volatile leds_t* leds);
 void LedsOff(volatile leds_t* leds);
