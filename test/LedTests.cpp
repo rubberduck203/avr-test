@@ -52,3 +52,10 @@ TEST(LedDriverTests, TurnMultipleLedsOn)
     LedOn(&leds, 7);
     BYTES_EQUAL(0x41, leds);
 }
+
+TEST(LedDriverTests, TurnLedThreeOff)
+{
+    leds_t leds = ON;
+    LedOff(&leds, 3);
+    BYTES_EQUAL(0xfb, leds);
+}

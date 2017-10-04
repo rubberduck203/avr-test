@@ -18,5 +18,10 @@ void LedOn(leds_t* leds, uint8_t ledNumber)
      * then shift a one into that bit of an integer
      * finally, we apply the bitmask against the existing state
      */
-    *leds = *leds | (1 << (ledNumber - 1));
+    *leds |= (1 << (ledNumber - 1));
+}
+
+void LedOff(leds_t* leds, uint8_t ledNumber)
+{
+    *leds &= ~(1 << (ledNumber - 1));
 }
