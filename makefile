@@ -37,5 +37,5 @@ check:
 
 .PHONY: clean
 clean:
-	$(RM) **/bin/* **/obj/*
+	$(RM) **/bin/**/* **/obj/**/*
 	
