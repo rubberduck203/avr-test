@@ -6,5 +6,5 @@ TEST_GROUP(FirstTestGroup)
 
 TEST(FirstTestGroup, FirstTest)
 {
-   FAIL("Fail me!");
+    BYTES_EQUAL(0xff, 0xff);
 }
