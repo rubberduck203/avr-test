@@ -15,7 +15,7 @@
                 "${workspaceRoot}/src",
                 "${workspaceRoot}/test"
             ],
-            "defines": [],
+            "defines": ["__AVR_ATxmega128A1__"],
             "intelliSenseMode": "clang-x64",
             "browse": {
                 "path": [
@@ -44,7 +44,7 @@
                 "/usr/local/include",
                 "${workspaceRoot}"
             ],
-            "defines": [],
+            "defines": ["__AVR_ATxmega128A1__"],
             "intelliSenseMode": "clang-x64",
             "browse": {
                 "path": [
@@ -64,7 +64,8 @@
             ],
             "defines": [
                 "_DEBUG",
-                "UNICODE"
+                "UNICODE",
+                "__AVR_ATxmega128A1__"
             ],
             "intelliSenseMode": "msvc-x64",
             "browse": {
