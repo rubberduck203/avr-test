@@ -6,18 +6,18 @@ extern "C"
     #include "../src/LedDriver.h"
 }
 
-TEST_GROUP(FirstTestGroup)
+TEST_GROUP(LedDriverTests)
 {
 };
 
-TEST(FirstTestGroup, TurnAllLedsOn)
+TEST(LedDriverTests, TurnAllLedsOn)
 {
     leds_t leds = 0x00;
     LedsOn(&leds);
     BYTES_EQUAL(0xff, leds);
 }
 
-TEST(FirstTestGroup, TurnAllLedsOff)
+TEST(LedDriverTests, TurnAllLedsOff)
 {
     leds_t leds = 0xff;
     LedsOff(&leds);
