@@ -6,6 +6,12 @@ LD_LIBRARIES = $(shell pkg-config --libs cpputest)
 .PHONY: all
 all:
 	$(MAKE) check
+	$(MAKE) avr
+
+.PHONY: avr
+avr:
+	$(MAKE) clean
+	avr-gcc -Wall -c -mmcu=atxmega128a1 src/LedDriver.c -o src/obj/LedDriver.o
 
 .PHONY: build
 build:
