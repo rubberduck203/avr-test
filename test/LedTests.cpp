@@ -12,21 +12,21 @@ TEST_GROUP(LedDriverTests)
 
 TEST(LedDriverTests, TurnAllLedsOn)
 {
-    leds_t leds = 0x00;
+    leds_t leds = OFF;
     LedsOn(&leds);
-    BYTES_EQUAL(0xff, leds);
+    BYTES_EQUAL(ON, leds);
 }
 
 TEST(LedDriverTests, TurnAllLedsOff)
 {
-    leds_t leds = 0xff;
+    leds_t leds = ON;
     LedsOff(&leds);
-    BYTES_EQUAL(0x00, leds);
+    BYTES_EQUAL(OFF, leds);
 }
 
 TEST(LedDriverTests, TurnLedOneOn)
 {
-    leds_t leds = 0x00;
+    leds_t leds = OFF;
     LedOn(&leds, 1);
     BYTES_EQUAL(0x01, leds);
 }
