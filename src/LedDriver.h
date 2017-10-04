@@ -1,4 +1,6 @@
 #include <stdint.h>
 
-void LedsOn(uint8_t* leds);
-void LedsOff(uint8_t* leds);
+typedef uint8_t leds_t;
+
+void LedsOn(leds_t* leds);
+void LedsOff(leds_t* leds);

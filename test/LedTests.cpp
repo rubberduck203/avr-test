@@ -12,14 +12,14 @@ TEST_GROUP(FirstTestGroup)
 
 TEST(FirstTestGroup, TurnAllLedsOn)
 {
-    uint8_t leds = 0x00;
+    leds_t leds = 0x00;
     LedsOn(&leds);
     BYTES_EQUAL(0xff, leds);
 }
 
 TEST(FirstTestGroup, TurnAllLedsOff)
 {
-    uint8_t leds = 0xff;
+    leds_t leds = 0xff;
     LedsOff(&leds);
     BYTES_EQUAL(0x00, leds);
 }

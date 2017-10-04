@@ -1,12 +1,12 @@
 #include <stdint.h>
 #include "LedDriver.h"
 
-void LedsOn(uint8_t* leds)
+void LedsOn(leds_t* leds)
 {
     *leds = 0xff;
 }
 
-void LedsOff(uint8_t* leds)
+void LedsOff(leds_t* leds)
 {
     *leds = 0x00;
 }
