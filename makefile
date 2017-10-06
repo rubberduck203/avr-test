@@ -24,14 +24,10 @@ avr:
 	avr-gcc $(AVR_CFLAGS) $(AVR_OBJDIR)/LedDriver.o $(AVR_OBJDIR)/Demo.o -o $(AVR_BIN)/Demo.elf
 	avr-objcopy -j .text -j .data -O ihex $(AVR_BIN)/Demo.elf $(AVR_BIN)/Demo.hex
 	avr-size --format=avr --mcu=$(DEVICE) $(AVR_BIN)/Demo.elf
-	
-.PHONY: build
-build:
-	gcc -Wall -c src/LedDriver.c -o $(OBJDIR)/LedDriver.o
 
 .PHONY: check
 check:
-	$(MAKE) build
+	gcc -Wall -c src/LedDriver.c -o $(OBJDIR)/LedDriver.o
 	g++ $(CPPFLAGS) -Wall -o test/bin/AllTests $(OBJDIR)/LedDriver.o test/LedTests.cpp test/AllTests.cpp $(LD_LIBRARIES)
 	test/bin/AllTests -c
 
