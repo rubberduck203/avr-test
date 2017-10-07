@@ -45,7 +45,8 @@ check: test/bin/AllTests
 
 .PHONY: clean
 clean:
-	$(RM) **/bin/**/* **/obj/**/*
+	find **/bin/ -type f -delete
+	find **/obj/ -type f -delete
 
 ### Make predefined variable cheatsheet
 # $^ - all prereqs
