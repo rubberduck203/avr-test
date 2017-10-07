@@ -35,7 +35,9 @@ $(OBJDIR)/%.o: src/%.c
 	gcc -Wall -c $(CFLAGS) $^ -o $@
 
 # Build the test executable
-test/bin/AllTests: $(OBJDIR)/LedDriver.o test/LedTests.cpp test/AllTests.cpp
+testSource := $(wildcard test/*cpp)
+
+test/bin/AllTests: $(OBJDIR)/LedDriver.o $(testSource)
 	g++ $(CPPFLAGS) -Wall $^ -o $@ $(LD_LIBRARIES)
 
 .PHONY: check
