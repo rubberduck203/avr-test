@@ -12,6 +12,7 @@ AVR_OBJDIR = $(OBJDIR)/avr
 BIN = src/bin
 AVR_BIN = $(BIN)/avr
 
+# make
 demo: check $(AVR_BIN)/Demo.hex size
 
 # hex
@@ -30,9 +31,12 @@ $(AVR_OBJDIR)/%.o: src/%.c
 size:
 	avr-size --format=avr --mcu=$(DEVICE) $(AVR_BIN)/Demo.elf
 
+### Rules for compiling for Tests
+$(OBJDIR)/%.o: src/%.c
+	gcc -Wall -c $(CFLAGS) $^ -o $@
+
 .PHONY: check
-check:
-	gcc -Wall -c src/LedDriver.c -o $(OBJDIR)/LedDriver.o
+check: $(OBJDIR)/LedDriver.o
 	g++ $(CPPFLAGS) -Wall -o test/bin/AllTests $(OBJDIR)/LedDriver.o test/LedTests.cpp test/AllTests.cpp $(LD_LIBRARIES)
 	test/bin/AllTests -c
 
