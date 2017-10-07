@@ -17,11 +17,11 @@ demo: check $(AVR_BIN)/Demo.hex size
 
 # hex
 $(AVR_BIN)/Demo.hex: $(AVR_BIN)/Demo.elf
-	avr-objcopy -j .text -j .data -O ihex $(AVR_BIN)/Demo.elf $(AVR_BIN)/Demo.hex
+	avr-objcopy -j .text -j .data -O ihex $^ $@
 
 # elf
 $(AVR_BIN)/Demo.elf: $(AVR_OBJDIR)/Demo.o $(AVR_OBJDIR)/LedDriver.o
-	avr-gcc $(AVR_CFLAGS) $(AVR_OBJDIR)/LedDriver.o $(AVR_OBJDIR)/Demo.o -o $(AVR_BIN)/Demo.elf
+	avr-gcc $(AVR_CFLAGS) $^ -o $@
 
 # objects
 $(AVR_OBJDIR)/%.o: src/%.c
