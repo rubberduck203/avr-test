@@ -36,7 +36,7 @@ $(OBJDIR)/%.o: src/%.c
 	gcc -Wall -c $(CFLAGS) $^ -o $@
 
 # Build the test executable
-test/bin/AllTests: test/AllTests.cpp test/LedTests.cpp $(OBJDIR)/LedDriver.o 
+test/bin/AllTests: $(OBJDIR)/LedDriver.o test/LedTests.cpp test/AllTests.cpp
 	g++ $(CPPFLAGS) -Wall $^ -o $@ $(LD_LIBRARIES)
 
 .PHONY: check
@@ -52,4 +52,3 @@ clean:
 # $^ - all prereqs
 # $@ - target
 # $< - first prereq
-	
