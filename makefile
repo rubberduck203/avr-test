@@ -19,7 +19,9 @@ $(AVR_BIN)/%.hex: $(AVR_BIN)/%.elf
 	avr-objcopy -j .text -j .data -O ihex $^ $@
 
 # elf <- [obj]
-$(AVR_BIN)/Demo.elf: $(AVR_OBJDIR)/Demo.o $(AVR_OBJDIR)/LedDriver.o
+avrObjects := $(patsubst src/%.c,$(AVR_OBJDIR)/%.o,$(wildcard src/*.c))
+
+$(AVR_BIN)/Demo.elf: $(avrObjects)
 	avr-gcc $(AVR_CFLAGS) $^ -o $@
 
 # obj <- c
