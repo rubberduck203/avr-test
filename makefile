@@ -43,4 +43,9 @@ check: $(OBJDIR)/LedDriver.o test/LedTests.cpp test/AllTests.cpp
 .PHONY: clean
 clean:
 	$(RM) **/bin/**/* **/obj/**/*
+
+### Make predefined variable cheatsheet
+# $^ - all prereqs
+# $@ - target
+# $< - first prereq
 	
