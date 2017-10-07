@@ -12,17 +12,22 @@ AVR_OBJDIR = $(OBJDIR)/avr
 BIN = src/bin
 AVR_BIN = $(BIN)/avr
 
-.PHONY: all
-all:
-	$(MAKE) check
-	$(MAKE) avr
+demo: check $(AVR_BIN)/Demo.hex size
 
-.PHONY: avr
-avr:
-	avr-gcc -c $(AVR_CFLAGS) src/LedDriver.c -o $(AVR_OBJDIR)/LedDriver.o
-	avr-gcc -c $(AVR_CFLAGS) src/Demo.c -o $(AVR_OBJDIR)/Demo.o
-	avr-gcc $(AVR_CFLAGS) $(AVR_OBJDIR)/LedDriver.o $(AVR_OBJDIR)/Demo.o -o $(AVR_BIN)/Demo.elf
+# hex
+$(AVR_BIN)/Demo.hex: $(AVR_BIN)/Demo.elf
 	avr-objcopy -j .text -j .data -O ihex $(AVR_BIN)/Demo.elf $(AVR_BIN)/Demo.hex
+
+# elf
+$(AVR_BIN)/Demo.elf: $(AVR_OBJDIR)/Demo.o $(AVR_OBJDIR)/LedDriver.o
+	avr-gcc $(AVR_CFLAGS) $(AVR_OBJDIR)/LedDriver.o $(AVR_OBJDIR)/Demo.o -o $(AVR_BIN)/Demo.elf
+
+# objects
+$(AVR_OBJDIR)/%.o: src/%.c
+	avr-gcc -c $(AVR_CFLAGS) $^ -o $@
+
+.PHONY: size
+size:
 	avr-size --format=avr --mcu=$(DEVICE) $(AVR_BIN)/Demo.elf
 
 .PHONY: check
