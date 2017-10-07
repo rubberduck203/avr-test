@@ -36,8 +36,8 @@ $(OBJDIR)/%.o: src/%.c
 	gcc -Wall -c $(CFLAGS) $^ -o $@
 
 .PHONY: check
-check: $(OBJDIR)/LedDriver.o
-	g++ $(CPPFLAGS) -Wall -o test/bin/AllTests $(OBJDIR)/LedDriver.o test/LedTests.cpp test/AllTests.cpp $(LD_LIBRARIES)
+check: $(OBJDIR)/LedDriver.o test/LedTests.cpp test/AllTests.cpp
+	g++ $(CPPFLAGS) -Wall -o test/bin/AllTests $^ $(LD_LIBRARIES)
 	test/bin/AllTests -c
 
 .PHONY: clean
