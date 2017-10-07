@@ -12,18 +12,17 @@ AVR_OBJDIR = $(OBJDIR)/avr
 BIN = src/bin
 AVR_BIN = $(BIN)/avr
 
-# make
 demo: check $(AVR_BIN)/Demo.hex size
 
-# hex
-$(AVR_BIN)/Demo.hex: $(AVR_BIN)/Demo.elf
+# hex <- elf
+$(AVR_BIN)/%.hex: $(AVR_BIN)/%.elf
 	avr-objcopy -j .text -j .data -O ihex $^ $@
 
-# elf
+# elf <- [obj]
 $(AVR_BIN)/Demo.elf: $(AVR_OBJDIR)/Demo.o $(AVR_OBJDIR)/LedDriver.o
 	avr-gcc $(AVR_CFLAGS) $^ -o $@
 
-# objects
+# obj <- c
 $(AVR_OBJDIR)/%.o: src/%.c
 	avr-gcc -c $(AVR_CFLAGS) $^ -o $@
 
