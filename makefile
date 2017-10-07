@@ -35,10 +35,13 @@ size:
 $(OBJDIR)/%.o: src/%.c
 	gcc -Wall -c $(CFLAGS) $^ -o $@
 
+# Build the test executable
+test/bin/AllTests: test/AllTests.cpp test/LedTests.cpp $(OBJDIR)/LedDriver.o 
+	g++ $(CPPFLAGS) -Wall $^ -o $@ $(LD_LIBRARIES)
+
 .PHONY: check
-check: $(OBJDIR)/LedDriver.o test/LedTests.cpp test/AllTests.cpp
-	g++ $(CPPFLAGS) -Wall -o test/bin/AllTests $^ $(LD_LIBRARIES)
-	test/bin/AllTests -c
+check: test/bin/AllTests
+	$< -c
 
 .PHONY: clean
 clean:
