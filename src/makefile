@@ -12,8 +12,8 @@ $(BIN)/%.hex: $(BIN)/%.elf
 
 # elf <- [obj]
 .PRECIOUS: $(BIN)/%.elf
-avrObjects := $(patsubst %.c,$(OBJ)/%.o,$(wildcard *.c))
-$(BIN)/%.elf: $(avrObjects)
+objects := $(patsubst %.c,$(OBJ)/%.o,$(wildcard *.c))
+$(BIN)/%.elf: $(objects)
 	avr-gcc $(CFLAGS) $^ -o $@
 
 # obj <- c
