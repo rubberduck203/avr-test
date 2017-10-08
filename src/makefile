@@ -1,7 +1,7 @@
 DEVICE = atxmega128a1
 CFLAGS = -Wall -Os -mmcu=$(DEVICE) -DF_CPU=32000000UL
 
-OBJDIR = obj
+OBJ = obj
 BIN = bin
 
 demo: $(BIN)/Demo.hex size
@@ -12,13 +12,13 @@ $(BIN)/%.hex: $(BIN)/%.elf
 
 # elf <- [obj]
 .PRECIOUS: $(BIN)/%.elf
-avrObjects := $(patsubst %.c,$(OBJDIR)/%.o,$(wildcard *.c))
+avrObjects := $(patsubst %.c,$(OBJ)/%.o,$(wildcard *.c))
 $(BIN)/%.elf: $(avrObjects)
 	avr-gcc $(CFLAGS) $^ -o $@
 
 # obj <- c
-.PRECIOUS: $(OBJDIR)/%.o
-$(OBJDIR)/%.o: %.c
+.PRECIOUS: $(OBJ)/%.o
+$(OBJ)/%.o: %.c
 	avr-gcc -c $(CFLAGS) $^ -o $@
 
 .PHONY: size
