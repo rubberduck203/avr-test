@@ -13,9 +13,13 @@
                 "/usr/local/Cellar/avr-gcc/7.2.0/avr/include",
                 "${workspaceRoot}",
                 "${workspaceRoot}/src",
-                "${workspaceRoot}/test"
+                "${workspaceRoot}/test",
+                "/usr/local/Cellar/gcc/7.1.0/include/c++/7.1.0/tr1",
+                "/usr/local/Cellar/gcc/7.1.0/include/c++/7.1.0"
             ],
-            "defines": ["__AVR_ATxmega128A1__"],
+            "defines": [
+                "__AVR_ATxmega128A1__"
+            ],
             "intelliSenseMode": "clang-x64",
             "browse": {
                 "path": [
@@ -44,7 +48,9 @@
                 "/usr/local/include",
                 "${workspaceRoot}"
             ],
-            "defines": ["__AVR_ATxmega128A1__"],
+            "defines": [
+                "__AVR_ATxmega128A1__"
+            ],
             "intelliSenseMode": "clang-x64",
             "browse": {
                 "path": [
