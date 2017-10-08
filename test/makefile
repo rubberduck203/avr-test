@@ -27,3 +27,8 @@ check: $(BIN)/AllTests
 .PHONY: clean
 clean:
 	$(RM) bin/* obj/*
+
+### Make predefined variable cheatsheet
+# $^ - all prereqs
+# $@ - target
+# $< - first prereq
