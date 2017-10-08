@@ -1,8 +1,3 @@
-CPPFLAGS += $(shell pkg-config --cflags cpputest)
-CXXFLAGS += -include CppUTest/MemoryLeakDetectorNewMacros.h
-CFLAGS += -include CppUTest/MemoryLeakDetectorMallocMacros.h
-LD_LIBRARIES = $(shell pkg-config --libs cpputest)
-
 DEVICE = atxmega128a1
 AVR_CFLAGS = -Wall -Os -mmcu=$(DEVICE) -DF_CPU=32000000UL
 
@@ -32,19 +27,9 @@ $(AVR_OBJDIR)/%.o: src/%.c
 size:
 	avr-size --format=avr --mcu=$(DEVICE) $(AVR_BIN)/Demo.elf
 
-### Rules for compiling for Tests
-$(OBJDIR)/%.o: src/%.c
-	gcc -Wall -c $(CFLAGS) $^ -o $@
-
-# Build the test executable
-testSource := $(wildcard test/*cpp)
-
-test/bin/AllTests: $(OBJDIR)/LedDriver.o $(testSource)
-	g++ $(CPPFLAGS) -Wall $^ -o $@ $(LD_LIBRARIES)
-
 .PHONY: check
-check: test/bin/AllTests
-	$< -c
+check:
+	$(MAKE) -C test
 
 .PHONY: clean
 clean:
