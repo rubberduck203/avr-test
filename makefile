@@ -21,7 +21,7 @@ $(AVR_BIN)/%.hex: $(AVR_BIN)/%.elf
 # elf <- [obj]
 avrObjects := $(patsubst src/%.c,$(AVR_OBJDIR)/%.o,$(wildcard src/*.c))
 
-$(AVR_BIN)/Demo.elf: $(avrObjects)
+$(AVR_BIN)/%.elf: $(avrObjects)
 	avr-gcc $(AVR_CFLAGS) $^ -o $@
 
 # obj <- c
