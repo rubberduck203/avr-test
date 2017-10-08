@@ -13,16 +13,17 @@ objects := $(OBJ)/LedDriver.o
 
 all: check
 
-### Rules for compiling for Tests
+### Compile code under test
 $(OBJ)/%.o: $(SRC)/%.c
 	gcc -Wall -c $(CFLAGS) $^ -o $@
 
+### Create test runner executable
 $(BIN)/AllTests: $(objects) $(testSource)
-	g++ $(CPPFLAGS) -Wall $^ -o $@ $(LD_LIBRARIES)
+	g++ -Wall $(CPPFLAGS) $^ -o $@ $(LD_LIBRARIES)
 
 .PHONY: check
 check: $(BIN)/AllTests
-	$< -c
+	$< -c -v 
 
 .PHONY: clean
 clean:
