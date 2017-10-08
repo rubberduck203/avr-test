@@ -1,10 +1,13 @@
+PROGNAME = Demo
+
 DEVICE = atxmega128a1
 CFLAGS = -Wall -Os -mmcu=$(DEVICE) -DF_CPU=32000000UL
 
 OBJ = obj
 BIN = bin
 
-demo: $(BIN)/Demo.hex size
+all: demo
+demo: $(BIN)/$(PROGNAME).hex size
 
 # hex <- elf
 $(BIN)/%.hex: $(BIN)/%.elf
@@ -23,7 +26,7 @@ $(OBJ)/%.o: %.c
 
 .PHONY: size
 size:
-	avr-size --format=avr --mcu=$(DEVICE) $(BIN)/Demo.elf
+	avr-size --format=avr --mcu=$(DEVICE) $(BIN)/$(PROGNAME).elf
 
 .PHONY: clean
 clean:
