@@ -1,3 +1,4 @@
+all: demo
 demo: check avr
 
 avr:
