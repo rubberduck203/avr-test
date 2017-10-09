@@ -1,13 +1,20 @@
-PROGNAME = Demo
-
+# name of the resulting program/hex file
+PROGNAME = demo
+# Valid avr-gcc device from this list: 
+# http://www.atmel.com/webdoc/avrlibcreferencemanual/index_1supp_devices.html
 DEVICE = atxmega128a1
-CFLAGS = -Wall -Os -mmcu=$(DEVICE) -DF_CPU=32000000UL
+# Processor speed (check your datasheet)
+F_CPU = 32000000UL
+
+### Shouldn't need to modify below this line ###
+
+CFLAGS = -Wall -Os -mmcu=$(DEVICE) -DF_CPU=$(F_CPU)
 
 OBJ = obj
 BIN = bin
 
-all: demo
-demo: $(BIN)/$(PROGNAME).hex size
+all: $(PROGNAME)
+$(PROGNAME): $(BIN)/$(PROGNAME).hex size
 
 # hex <- elf
 $(BIN)/%.hex: $(BIN)/%.elf
