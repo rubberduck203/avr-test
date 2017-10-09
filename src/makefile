@@ -17,11 +17,13 @@ $(BIN)/%.hex: $(BIN)/%.elf
 .PRECIOUS: $(BIN)/%.elf
 objects := $(patsubst %.c,$(OBJ)/%.o,$(wildcard *.c))
 $(BIN)/%.elf: $(objects)
+	@mkdir -p $(BIN)
 	avr-gcc $(CFLAGS) $^ -o $@
 
 # obj <- c
 .PRECIOUS: $(OBJ)/%.o
 $(OBJ)/%.o: %.c
+	@mkdir -p $(OBJ)
 	avr-gcc -c $(CFLAGS) $^ -o $@
 
 .PHONY: size

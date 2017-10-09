@@ -15,10 +15,12 @@ all: check
 
 ### Compile code under test
 $(OBJ)/%.o: $(SRC)/%.c
+	@mkdir -p $(OBJ)
 	gcc -Wall -c $(CFLAGS) $^ -o $@
 
 ### Create test runner executable
 $(BIN)/AllTests: $(objects) $(testSource)
+	@mkdir -p $(BIN)
 	g++ -Wall $(CPPFLAGS) $^ -o $@ $(LD_LIBRARIES)
 
 .PHONY: check
