@@ -12,8 +12,6 @@ void Setup(void)
 
 void Loop(void) 
 {
-    //Just here to make sure we can link.
-    // Implementation will come later.
     LedsOff(LedRegister);
     _delay_ms(1000);
     LedsOn(LedRegister);

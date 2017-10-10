@@ -1,4 +1,3 @@
-//#include <stdint.h>
 #include "CppUTest/TestHarness.h"
 
 extern "C"
