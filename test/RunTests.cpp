@@ -20,5 +20,5 @@ TEST(RunTests, SetupForOutput)
 TEST(RunTests, LedsRegisterAssignedToPORTE)
 {
     Setup();
-    POINTERS_EQUAL(&PORTE.OUT, leds);
+    POINTERS_EQUAL(&PORTE.OUT, LedRegister);
 }

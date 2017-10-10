@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "io.h": "c",
+        "sfr_defs.h": "c",
+        "delay.h": "c",
+        "delay_basic.h": "c"
+    }
+}

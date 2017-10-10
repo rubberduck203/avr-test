@@ -2,21 +2,20 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-volatile leds_t* leds;
+volatile leds_t* LedRegister;
 
 void Setup(void)
 {
     PORTE.DIR = 0xff; //config entire port for output
-    leds = &PORTE.OUT;
+    LedRegister = &PORTE.OUT;
 }
 
 void Loop(void) 
 {
     //Just here to make sure we can link.
     // Implementation will come later.
-    //volatile leds_t* leds = &PORTE.OUT;
-    LedsOff(leds);
+    LedsOff(LedRegister);
     _delay_ms(1000);
-    LedsOn(leds);
+    LedsOn(LedRegister);
     _delay_ms(1000);
 }
