@@ -1,11 +1,6 @@
 #ifndef _AVR_IO_H_
 #define _AVR_IO_H_
 
-/*
---------------------------------------------------------------------------
-PORT - Port Configuration
---------------------------------------------------------------------------
-*/
 #include <stdint.h>
 
 typedef volatile uint8_t register8_t;

@@ -3,7 +3,7 @@ CXXFLAGS += -include CppUTest/MemoryLeakDetectorNewMacros.h
 CFLAGS += -include CppUTest/MemoryLeakDetectorMallocMacros.h
 LD_LIBRARIES = $(shell pkg-config --libs cpputest)
 
-CPPFLAGS += -Imocks/include 
+CPPFLAGS += -Imocks
 
 OBJ = obj
 BIN = bin
