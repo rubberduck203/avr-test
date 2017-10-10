@@ -1,6 +1,7 @@
 CPPFLAGS += $(shell pkg-config --cflags cpputest)
 CXXFLAGS += -include CppUTest/MemoryLeakDetectorNewMacros.h
 CFLAGS += -include CppUTest/MemoryLeakDetectorMallocMacros.h
+CFLAGS += -Imocks/include 
 LD_LIBRARIES = $(shell pkg-config --libs cpputest)
 
 OBJ = obj
