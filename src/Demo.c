@@ -1,6 +1,11 @@
 #include "Run.h"
 
 int main(void) 
-{
-    return Run();
+{   
+    while (1)
+    {
+        Run();
+    }
+    
+    return 0;
 }

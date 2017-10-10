@@ -37,5 +37,4 @@ typedef struct PORT_struct
 } PORT_t;
 
 register8_t fakePort[24];
-
 #define PORTE (*(PORT_t *) &fakePort)
