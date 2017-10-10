@@ -1,3 +1,6 @@
+#ifndef _AVR_IO_H_
+#define _AVR_IO_H_
+
 /*
 --------------------------------------------------------------------------
 PORT - Port Configuration
@@ -36,5 +39,7 @@ typedef struct PORT_struct
     register8_t PIN7CTRL;  /* Pin 7 Control Register */
 } PORT_t;
 
-register8_t fakePort[24];
+extern register8_t fakePort[24];
 #define PORTE (*(PORT_t *) &fakePort)
+
+#endif

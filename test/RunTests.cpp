@@ -1,6 +1,5 @@
 //#include <stdint.h>
 #include "CppUTest/TestHarness.h"
-#include "mocks/include/avr/io.h"
 
 extern "C"
 {

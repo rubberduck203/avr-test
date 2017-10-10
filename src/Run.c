@@ -2,7 +2,7 @@
 #include <avr/io.h>
 #include <util/delay.h>
 
-volatile leds_t* LedRegister;
+leds_t* LedRegister;
 
 void Setup(void)
 {
