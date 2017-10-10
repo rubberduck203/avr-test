@@ -1,1 +1,3 @@
-int Run(void);
+
+void Setup(void);
+void Loop(void);

@@ -2,9 +2,11 @@
 
 int main(void) 
 {   
+    Setup();
+
     while (1)
     {
-        Run();
+        Loop();
     }
     
     return 0;

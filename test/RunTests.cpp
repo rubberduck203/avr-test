@@ -13,6 +13,6 @@ TEST_GROUP(RunTests)
 
 TEST(RunTests, SetupForOutput)
 {
-    Run();
+    Setup();
     BYTES_EQUAL(0xff, PORTE.DIR);
 }
