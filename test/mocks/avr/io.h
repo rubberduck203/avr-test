@@ -34,7 +34,7 @@ typedef struct PORT_struct
     register8_t PIN7CTRL;  /* Pin 7 Control Register */
 } PORT_t;
 
-extern register8_t fakePort[24];
-#define PORTE (*(PORT_t *) &fakePort)
+extern PORT_t FakePort;
+#define PORTE (*(PORT_t *) &FakePort)
 
 #endif
