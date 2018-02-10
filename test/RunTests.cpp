@@ -12,11 +12,11 @@ TEST_GROUP(RunTests)
 TEST(RunTests, SetupForOutput)
 {
     Setup();
-    BYTES_EQUAL(0xff, PORTE.DIR);
+    BYTES_EQUAL(0xff, DDRD);
 }
 
-TEST(RunTests, LedsRegisterAssignedToPORTE)
+TEST(RunTests, LedsRegisterAssignedToPORTD)
 {
     Setup();
-    POINTERS_EQUAL(&PORTE.OUT, LedRegister);
+    POINTERS_EQUAL(&PORTD, LedRegister);
 }

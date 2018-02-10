@@ -7,4 +7,5 @@ int main(int ac, char** av)
 
 // Used by mock/avr/io.h to fake the PORT. 
 // DO NOT DEFINE ELSEWHERE.
-PORT_t FakePort;
+volatile uint8_t DDRD;
+volatile uint8_t PORTD;

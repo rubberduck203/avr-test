@@ -3,6 +3,7 @@
 
 #include <stdint.h>
 #include <avr/io.h>
+typedef volatile uint8_t register8_t;
 typedef register8_t leds_t;
 
 #define OFF 0xff

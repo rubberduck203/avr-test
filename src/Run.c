@@ -6,8 +6,8 @@ leds_t* LedRegister;
 
 void Setup(void)
 {
-    PORTE.DIR = 0xff; //config entire port for output
-    LedRegister = &PORTE.OUT;
+    DDRD = 0xff; //config entire port for output
+    LedRegister = &PORTD;
 }
 
 void Loop(void) 
