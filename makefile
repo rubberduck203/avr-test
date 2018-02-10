@@ -16,5 +16,8 @@ clean:
 	$(MAKE) -C src $@
 	$(MAKE) -C test $@
 
+install:
+	$(MAKE) -C src $@
+
 ### Make predefined variable cheatsheet
 # $@ - target
